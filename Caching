@@ -1,0 +1,46 @@
+Caching - Usually runs on some kind of SSD so faster read operations
+
+Usual flow => Client -> server -> Cache -> DB
+
+1. Helps reduce the number of network calls to DB
+2. Helps avoid repetated computations 
+3. Reduce DB load 
+
+Caching policy - To determine what is to be added to the cache and what is to be removed from the cache 
+
+LRU - Least Recently Used (most popular) - When you need to add someting add to the top, when you need to remove something, remove from the bottom 
+
+LFU - Least Frequently used policy - 
+
+Sliding window based policies - 
+
+
+Why having a good caching policy is important? 
+    If you have a bad cache eviction policy it can lead to 
+
+    * Extra calls - say some data was not in the cache, there was still a inbetween call to the cache before getting to the DB
+    * Thrashing - Say the size of the cache is too small, everytime we'll overwrite and repeat the DB fetch operations unnecessarily 
+    * Data inconsistency - Say the cache is not updated with an edited info that was updated in the DB, this will lead to data inconsistency
+
+
+Where to place the cache? 
+
+Either close to the server - on the server in memory - 
+    1. But say there are 2 servers, keeping both their caches in sync would be additional task
+    2. What if the server goes down? it'll take the cache with it 
+Or a globally accessible cache like Redis - which can keep the information in sync and save time in implementation 
+    - this will sit in between the server and the DB as a different entity 
+
+
+Types of Caches 
+
+Server -> Cache -> DB
+Write through - You first update the cache and then update the DB -> 
+    Drawbacks - What if there are multiple caches? How do we make sure all of them are in sync? 
+                What if the updated information is sensitive? We will have a split second before the DB is updated with the right value leading into a blind spot
+Write Back - You first update the DB, come back and then clear/ null out all the cache entries for the updated record 
+    Drawbacks - Slower 
+
+Using combination of both the write through and write back caches can overcome the drawbacks 
+
+

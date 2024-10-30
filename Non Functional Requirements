@@ -1,0 +1,22 @@
+Some main non-functional requirements to remember - scalability, maintainability, performance, portability, security, reliability
+
+1. Performance requirements: 
+        Response type, 
+        throughput (the quantity of transactions or processes that the system needs to make in a given amount of time), 
+        Scalability (how thw system can handle growing workload and user base)
+2. Reliability:
+        Perform functions consistently and accurately over time 
+3. Scalability:
+        Ability to grow in data volume and user load
+4. Availability:
+        
+Usability:
+security: 
+maintainability:
+Efficiency:
+portability:
+Reusability: 
+
+
+Tip: 
+Note list of non-functional requirements BASED ON PRIORITY
